@@ -775,6 +775,7 @@ config ARCH_STM32
 	select RESET_CONTROLLER
 	select SPARSE_IRQ
 	select USE_OF
+	select STM32_EXTI
 	help
 	  Support for STMicroelectronics STM32 processors.
 
