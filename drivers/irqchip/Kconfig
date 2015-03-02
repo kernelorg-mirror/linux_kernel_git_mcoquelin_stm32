@@ -187,3 +187,7 @@ config IMX_GPCV2
 	select IRQ_DOMAIN
 	help
 	  Enables the wakeup IRQs for IMX platforms with GPCv2 block
+
+config STM32_EXTI
+	bool
+	select IRQ_DOMAIN
