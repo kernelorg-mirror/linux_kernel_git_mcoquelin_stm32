@@ -139,6 +139,7 @@ config PINCTRL_STM32
 	select PINMUX
 	select PINCONF
 	select GPIOLIB_IRQCHIP
+	select MFD_SYSCON
 	help
 	  This selects the device tree based generic pinctrl driver for STM32.
 
