@@ -67,5 +67,7 @@
 };
 
 &usart1 {
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_usart1>;
 	status = "okay";
 };

@@ -45,10 +45,26 @@
  *     OTHER DEALINGS IN THE SOFTWARE.
  */
 
+#include <dt-bindings/pinctrl/pinctrl-stm32.h>
 #include "armv7-m.dtsi"
 #include  <dt-bindings/mfd/stm32f4-rcc.h>
 
 / {
+
+	aliases {
+		gpio0 = &gpioa;
+		gpio1 = &gpiob;
+		gpio2 = &gpioc;
+		gpio3 = &gpiod;
+		gpio4 = &gpioe;
+		gpio5 = &gpiof;
+		gpio6 = &gpiog;
+		gpio7 = &gpioh;
+		gpio8 = &gpioi;
+		gpio9 = &gpioj;
+		gpio10 = &gpiok;
+	};
+
 	clocks {
 		clk_sysclk: clk-sysclk {
 			#clock-cells = <0>;
@@ -211,6 +227,162 @@
 			interrupts = <71>;
 			clocks = <&clk_pclk2>;
 			status = "disabled";
+		};
+
+		pin-controller {
+			#address-cells = <1>;
+			#size-cells = <1>;
+			compatible = "st,stm32-pinctrl";
+			ranges = <0 0x40020000 0x3000>;
+
+			gpioa: gpio@40020000 {
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x0 0x400>;
+				st,bank-name = "GPIOA";
+			};
+
+			gpiob: gpio@40020400 {
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x400 0x400>;
+				st,bank-name = "GPIOB";
+			};
+
+			gpioc: gpio@40020800 {
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x800 0x400>;
+				st,bank-name = "GPIOC";
+			};
+
+			gpiod: gpio@40020c00 {
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0xc00 0x400>;
+				st,bank-name = "GPIOD";
+			};
+
+			gpioe: gpio@40021000 {
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x1000 0x400>;
+				st,bank-name = "GPIOE";
+			};
+
+			gpiof: gpio@40021400 {
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x1400 0x400>;
+				st,bank-name = "GPIOF";
+			};
+
+			gpiog: gpio@40021800 {
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x1800 0x400>;
+				st,bank-name = "GPIOG";
+			};
+
+			gpioh: gpio@40021c00 {
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x1c00 0x400>;
+				st,bank-name = "GPIOH";
+			};
+
+			gpioi: gpio@40022000 {
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x2000 0x400>;
+				st,bank-name = "GPIOI";
+			};
+
+			gpioj: gpio@40022400 {
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x2400 0x400>;
+				st,bank-name = "GPIOJ";
+			};
+
+			gpiok: gpio@40022800 {
+				gpio-controller;
+				#gpio-cells = <2>;
+				reg = <0x2800 0x400>;
+				st,bank-name = "GPIOK";
+			};
+
+			usart1 {
+				pinctrl_usart1: usart1-0 {
+					st,pins {
+						tx = <&gpioa 9 ALT7 NO_PULL PUSH_PULL LOW_SPEED>;
+						rx = <&gpioa 10 ALT7 NO_PULL>;
+					};
+				};
+			};
+
+			usart2 {
+				pinctrl_usart2: usart2-0 {
+					st,pins {
+						tx = <&gpioa 2 ALT7 NO_PULL PUSH_PULL LOW_SPEED>;
+						rx = <&gpioa 3 ALT7 NO_PULL>;
+					};
+				};
+			};
+
+			usart3 {
+				pinctrl_usart3: usart3-0 {
+					st,pins {
+						tx = <&gpiob 10 ALT7 NO_PULL PUSH_PULL LOW_SPEED>;
+						rx = <&gpiob 11 ALT7 NO_PULL>;
+					};
+				};
+			};
+
+			usart4 {
+				pinctrl_usart4: usart4-0 {
+					st,pins {
+						tx = <&gpioa 0 ALT8 NO_PULL PUSH_PULL LOW_SPEED>;
+						rx = <&gpioa 1 ALT8 NO_PULL>;
+					};
+				};
+			};
+
+			usart5 {
+				pinctrl_usart5: usart5-0 {
+					st,pins {
+						tx = <&gpioc 12 ALT8 NO_PULL PUSH_PULL LOW_SPEED>;
+						rx = <&gpiod 2 ALT8 NO_PULL>;
+					};
+				};
+			};
+
+			usart6 {
+				pinctrl_usart6: usart6-0 {
+					st,pins {
+						tx = <&gpioc 6 ALT8 NO_PULL PUSH_PULL LOW_SPEED>;
+						rx = <&gpioc 7 ALT8 NO_PULL>;
+					};
+				};
+			};
+
+			usart7 {
+				pinctrl_usart7: usart7-0 {
+					st,pins {
+						tx = <&gpioe 8 ALT8 NO_PULL PUSH_PULL LOW_SPEED>;
+						rx = <&gpioe 7 ALT8 NO_PULL>;
+					};
+				};
+			};
+
+			usart8 {
+				pinctrl_usart8: usart8-0 {
+					st,pins {
+						tx = <&gpioe 1 ALT8 NO_PULL PUSH_PULL LOW_SPEED>;
+						rx = <&gpioe 0 ALT8 NO_PULL>;
+					};
+				};
+			};
 		};
 
 		rcc: rcc@40023810 {
